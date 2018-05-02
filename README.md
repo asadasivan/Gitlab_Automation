@@ -12,7 +12,7 @@ python3 gitlabautomation.py
 
 | scriptname  | Details |
 | --------| ------------|
-| gitlabautomation.py| script to clone all repos that belong to group or organization |
+| clonerepo.py| script to clone all repos that belong to group or organization seggrated using branch |
 
 
 ## Getting Help

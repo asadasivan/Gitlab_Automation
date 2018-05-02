@@ -1,6 +1,3 @@
-Gitlab_Automation
-=================
-
 ## Introduction
 This project contains scripts to automate Gitlab.
 

@@ -1,8 +1,3 @@
-'''
-Created on Apr 5, 2018
-
-@author: asadasivan
-'''
 #!/usr/bin/python
 
 '''
@@ -24,7 +19,7 @@ import shutil # create zip file
 
 
 # Defaults
-gitBaseURL= "https://onecode.polycom-labs.com/api/v4/"
+gitBaseURL= "https://gitlab-uri/api/v4/"
 
 def initiateGETRequest(URL):
     try:

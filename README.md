@@ -1,4 +1,4 @@
-# Gitlab_Automation
+Gitlab_Automation
 ====================
 
 # Introduction

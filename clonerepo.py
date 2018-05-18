@@ -5,7 +5,7 @@
  * @File: clonerepo.py
  * @Author: Arunkumar Sadasivan
  * @Date: 04/05/2018
- * @Description: Clone all repo's that belong to a group or organization. Repo's can be seggrated based on the branch.
+ * @Description: Clone all repo's that belong to a group or organization. Repo's can be segregated based on the branch.
  * @Usage: clonerepo.py
  * @Dependecies: python 3.6   
  */

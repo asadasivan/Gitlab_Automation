@@ -103,7 +103,7 @@ def createGitRepoZip (groupName, personalToken, branchName):
     root_dir = cwd + "/" + groupName
     # shutil.make_archive(base_name,format,root_dir,base_dir)
     archivename = shutil.make_archive(base_name, fileType, root_dir)
-    print("[Success] " + groupName + " successfully created.")
+    print("[Success] " + archivename + " successfully created.")
     return archivename
 
 

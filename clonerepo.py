@@ -110,5 +110,6 @@ def createGitRepoZip (groupName, personalToken, branchName):
 groupname = "groupname"
 branchname = "master"
 gitpersonalToken = "**************"
+userName = "asadasivan"
 createSourceRepo(groupname, gitpersonalToken, branchname, userName)
 

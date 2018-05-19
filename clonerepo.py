@@ -111,5 +111,5 @@ groupname = "groupname"
 branchname = "master"
 gitpersonalToken = "**************"
 userName = "asadasivan"
-createSourceRepo(groupname, gitpersonalToken, branchname, userName)
+createSourceRepoZip(groupname, gitpersonalToken, branchname, userName)
 

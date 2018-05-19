@@ -63,8 +63,8 @@ def checkRepoBranchExists(repoName, repoId, personalToken, branchName):
      
         
 # run git clone command        
-def gitClone(repo, branchName, personalToken):
-    repo = repo.replace("https://","https://" + personalToken + "@")
+def gitClone(repo, branchName, personalToken, userName):
+    repo = repo.replace("https://","https://" + userName + ":" + personalToken + "@")
     gitCommand = "git clone -b " + branchName + " " + repo
     try:
         subprocess.run(gitCommand,check=True,shell=True)
@@ -78,7 +78,7 @@ def checkDirExists(path):
 
 
 # clone all repos that belong to a group 
-def createSourceRepo(groupName, personalToken, branchName):
+def createSourceRepo(groupName, personalToken, branchName, userName):
     groupId = getGitlabGroupId(groupName, personalToken)
     httpURLrepoDict = getGitlabRepos(str(groupId), personalToken) 
     #cwd = os.getcwd()
@@ -88,7 +88,7 @@ def createSourceRepo(groupName, personalToken, branchName):
         repoId = repoInfo[0]
         repoURL = repoInfo[1]
         if checkRepoBranchExists(repoName, str(repoId), personalToken, branchName):
-            gitClone(repoURL, branchName, personalToken)       
+            gitClone(repoURL, branchName, personalToken, userName)       
     #archivename = createSourceRepoZip (groupName,cwd)
     #return archivename
     
@@ -110,5 +110,5 @@ def createGitRepoZip (groupName, personalToken, branchName):
 groupname = "groupname"
 branchname = "master"
 gitpersonalToken = "**************"
-createSourceRepo(groupname, gitpersonalToken, branchname)
+createSourceRepo(groupname, gitpersonalToken, branchname, userName)
 

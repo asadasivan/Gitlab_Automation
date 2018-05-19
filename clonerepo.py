@@ -93,8 +93,8 @@ def createSourceRepo(groupName, personalToken, branchName, userName):
     #return archivename
     
 # create zip file    
-def createGitRepoZip (groupName, personalToken, branchName):
-    createSourceRepo(groupName, personalToken, branchName)
+def createGitRepoZip (groupName, personalToken, branchName, userName):
+    createSourceRepo(groupName, personalToken, branchName, userName)
     os.chdir("..")
     cwd = os.getcwd()
     print("[Info] Archiving " + groupName)
@@ -111,5 +111,5 @@ groupname = "groupname"
 branchname = "master"
 gitpersonalToken = "**************"
 userName = "asadasivan"
-createSourceRepoZip(groupname, gitpersonalToken, branchname, userName)
+createGitRepoZip(groupname, gitpersonalToken, branchname, userName)
 

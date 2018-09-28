@@ -21,6 +21,9 @@ import shutil # create zip file
 # Defaults
 gitBaseURL= "https://gitlab-uri/api/v4/"
 
+# Repo's to exclude
+excludeRepo = ["repo1", "repo2"]
+
 def initiateGETRequest(URL):
     try:
         response = requests.get(URL) 
@@ -85,6 +88,8 @@ def createSourceRepo(groupName, personalToken, branchName, userName):
     checkDirExists(groupName)
     os.chdir(groupName)
     for repoName, repoInfo in httpURLrepoDict.items():
+        if repoName in excludeRepo: # Repo's to exclude
+            continue
         repoId = repoInfo[0]
         repoURL = repoInfo[1]
         if checkRepoBranchExists(repoName, str(repoId), personalToken, branchName):

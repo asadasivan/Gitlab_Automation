@@ -13,6 +13,7 @@
 '''
 
 import os
+import sys
 import requests
 import subprocess
 import shutil # create zip file
@@ -35,7 +36,11 @@ def getGitlabGroupId(groupName, personalToken):
     URL = gitBaseURL + "groups?search=" + groupName + "&private_token=" + personalToken 
     response = initiateGETRequest(URL)
     if response.status_code == 200:
-        return response.json()[0]["id"]
+        if response.json():
+            return response.json()[0]["id"]
+        else:
+            print("[Error] Check if the group name is correct or you have permission to access the group.")
+            sys.exit()
     else:
         errorMsg = "[Error] Error occurred while trying to get GIT Group ID"
         print(errorMsg)   
@@ -114,7 +119,7 @@ def createGitRepoZip (groupName, personalToken, branchName, userName):
 
 groupname = "groupname"
 branchname = "master"
-gitpersonalToken = "**************"
+gitpersonalToken = "******************"
 userName = "asadasivan"
 createGitRepoZip(groupname, gitpersonalToken, branchname, userName)
 

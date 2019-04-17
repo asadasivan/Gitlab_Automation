@@ -17,9 +17,11 @@ import sys
 import requests
 import subprocess
 import shutil # create zip file
+import argparse
 
 
 # Defaults
+
 gitBaseURL= "https://gitlab-uri/api/v4/"
 
 # Repo's to exclude
@@ -42,8 +44,9 @@ def getGitlabGroupId(groupName, personalToken):
             print("[Error] Check if the group name is correct or you have permission to access the group.")
             sys.exit()
     else:
-        errorMsg = "[Error] Error occurred while trying to get GIT Group ID"
-        print(errorMsg)   
+        errorMsg = "[Error] Error occurred while trying to get GIT Group ID. Check if API token is correct."
+        print(errorMsg)
+        sys.exit()   
 
 # get all git repos that belong to  a group     
 def getGitlabRepos(GroupId, personalToken):
@@ -117,9 +120,38 @@ def createGitRepoZip (groupName, personalToken, branchName, userName):
     return archivename
 
 
-groupname = "groupname"
-branchname = "master"
-gitpersonalToken = "******************"
-userName = "asadasivan"
-createGitRepoZip(groupname, gitpersonalToken, branchname, userName)
+###############################################################################
+# Main
+###############################################################################
+def main(args):
+    print("[Info] Using userName: " + args.userName)
+    print("[Info] Using branch: " + args.branchname)
+    createGitRepoZip(args.groupname, args.gitpersonalToken, args.branchname, args.userName)
+
+        
+if __name__ == "__main__":
+    def help_formatter(prog):
+        r"Widen the text that is printed when the app is invoked with --help"
+        args = dict(max_help_position=60, width=120)
+        return argparse.HelpFormatter(prog, **args)
+
+    parser = argparse.ArgumentParser(formatter_class=help_formatter)
+    parser.add_argument("-u", "--userName", default="asadasivan",
+                        required=False,
+                        help="Gitlab Username")
+    parser.add_argument("-t", "--gitpersonalToken", default=None,
+                        required=True,
+                        help="Gitlab Personal Token")
+    parser.add_argument("-g", "--groupname", default=None,
+                        required=True,
+                        help="Gitlab Group Name")
+    parser.add_argument("-b", "--branchname", default="masters",
+                        required=False,
+                        help="Gitlab Branch Name")
+    
+    args = parser.parse_args()
+    try:
+        main(args)
+    except KeyboardInterrupt:
+        pass     
 

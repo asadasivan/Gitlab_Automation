@@ -22,7 +22,7 @@ import argparse
 
 # Defaults
 
-gitBaseURL= "https://gitlab-uri/api/v4/"
+gitBaseURL= "https://onecode.polycom-labs.com/api/v4/"
 
 # Repo's to exclude
 excludeRepo = ["repo1", "repo2"]
@@ -145,7 +145,7 @@ if __name__ == "__main__":
     parser.add_argument("-g", "--groupname", default=None,
                         required=True,
                         help="Gitlab Group Name")
-    parser.add_argument("-b", "--branchname", default="masters",
+    parser.add_argument("-b", "--branchname", default="master",
                         required=False,
                         help="Gitlab Branch Name")
     
